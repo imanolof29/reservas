@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:reservas/bloc/restaurantes/restaurante_bloc.dart';
 import 'package:reservas/components/loading.dart';
 import 'package:reservas/model/restaurante.dart';
+import 'package:reservas/pages/reservar.dart';
 
 class RestaurantesScreen extends StatefulWidget{
 
@@ -13,8 +14,6 @@ class RestaurantesScreen extends StatefulWidget{
 }
 
 class _RestauranteScreenState extends State<RestaurantesScreen>{
-
-  final RestauranteBloc _bloc = RestauranteBloc();
 
   @override
   Widget build(BuildContext context) {
@@ -46,11 +45,20 @@ class _RestauranteScreenState extends State<RestaurantesScreen>{
     return ListView.builder(
       itemCount: restaurantes.length,
       itemBuilder: (context, index){
-        return Card(
-          child: Column(
-            children: [
-              Text(restaurantes[index].restaurante),
-            ],
+        return GestureDetector(
+          onTap: (){
+            Navigator.push(
+                context, 
+                MaterialPageRoute(builder: (context) => ReservarScreen(restaurante: restaurantes[index])
+              )
+            );
+          },
+          child: Card(
+            child: Column(
+              children: [
+                Text(restaurantes[index].restaurante),
+              ],
+            ),
           ),
         );
       }

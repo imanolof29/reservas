@@ -7,6 +7,6 @@ class Restaurante{
 
   Restaurante.fromJson(Map<String, dynamic> json)
       : id = json['id'],
-        restaurante = json['title'],
-        imagen = json['description'];
+        restaurante = json['restaurante'],
+        imagen = json['imagen'];
 }

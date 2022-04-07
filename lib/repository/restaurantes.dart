@@ -15,8 +15,10 @@ class RestaurantesRepository{
       Uri.parse(url),
       headers: headers
     );
+    print(response);
     if(response.statusCode==200){
-      List jsonResponse = json.decode(response.body);
+      List jsonResponse = json.decode(response.body)['results'];
+      
       return jsonResponse.map((e) => Restaurante.fromJson(e)).toList(); 
     }else{
       throw Exception('No se han podido cargar los restaurantes');

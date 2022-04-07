@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:reservas/bloc/restaurantes/restaurante_bloc.dart';
+import 'package:reservas/constants.dart';
 import 'package:reservas/model/restaurante.dart';
+import 'package:reservas/pages/login.dart';
+import 'package:reservas/pages/registro.dart';
 import 'package:reservas/pages/restaurantes.dart';
 
 void main() {
@@ -25,10 +29,12 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Reservas',
         theme: ThemeData(
-          primarySwatch: Colors.blue,
+          colorScheme: ColorScheme.fromSwatch().copyWith(
+            primary: HexColor(primaryRed)
+          ),
           appBarTheme: const AppBarTheme()
         ),
-        home: RestaurantesScreen(),
+        home: const LoginScreen(),
       ),
     );
   }
